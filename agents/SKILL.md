@@ -10,7 +10,9 @@ metadata: {"openclaw": {"requires": {"env": ["ELEVENLABS_API_KEY"]}, "primaryEnv
 
 Build voice AI agents with natural conversations, multiple LLM providers, custom tools, and easy web embedding.
 
-> **Setup, before writing any code:** if `ELEVENLABS_API_KEY` isn't set for this project, run `npx -y @elevenlabs/cli@latest onboard init` from the app's folder first and follow what it prints: it signs the user in and stores a key for the project, so nobody copies one by hand. Otherwise see the [Installation Guide](references/installation.md) for CLI and SDK setup.
+> **Offline-only testing:** the [tool contract reference](references/offline-tool-testing.md) runs locally without API keys or onboarding. For that task, skip live setup below.
+
+> **Setup for live integration, before writing any code:** if `ELEVENLABS_API_KEY` isn't set for this project, run `npx -y @elevenlabs/cli@latest onboard init` from the app's folder first and follow what it prints: it signs the user in and stores a key for the project, so nobody copies one by hand. Otherwise see the [Installation Guide](references/installation.md) for CLI and SDK setup.
 
 ## Quick Start with CLI
 
@@ -384,6 +386,8 @@ Layered safety enforcement that runs independently of the LLM — configured und
 
 ## Testing Agents
 
+For offline checks of the application behind a tool, use [Offline Tool Contract Testing](references/offline-tool-testing.md). No API key, onboarding, agent provisioning or paid test run is required for that path. Validate arguments, backend results and trusted authorization separately from model tool selection; local passes are not agent reliability scores.
+
 Three test types via `POST /v1/convai/agent-testing/create`, then attached with PATCH on the agent. Reference: [Agent Testing](https://elevenlabs.io/docs/eleven-agents/customization/agent-testing).
 
 | Type | Purpose |
@@ -555,6 +559,7 @@ Common errors: **401** (invalid key), **404** (not found), **422** (invalid conf
 - [Installation Guide](references/installation.md) - SDK setup and migration
 - [Agent Configuration](references/agent-configuration.md) - All config options and CRUD examples
 - [Client Tools](references/client-tools.md) - Webhook, client, and system tools
+- [Offline Tool Contract Testing](references/offline-tool-testing.md) - Local argument, response, authorization and recovery checks
 - [Using the Procedure API](references/using-procedure-api.md) - Procedure CLI and SDK flow, drafts and publish
 - [Writing Procedures](references/writing-procedures.md) - Trigger and content authoring, structured step reference and rules
 - [Widget Embedding](references/widget-embedding.md) - Website integration

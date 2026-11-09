@@ -3,7 +3,7 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Using the ElevenLabs CLI project conventions, scaffold the local project files and agent configuration for a restaurant reservation assistant. It should be able to check availability, book tables, and confirm reservations. Do not authenticate with or call the ElevenLabs API and do not deploy — produce the agents.json and agent config files only, and document the 'elevenlabs agents push' deploy step in a README.",
+      "prompt": "Using the ElevenLabs CLI project conventions, scaffold the local project files and agent configuration for a restaurant reservation assistant. It should be able to check availability, book tables, and confirm reservations. Do not authenticate with or call the ElevenLabs API and do not deploy \u2014 produce the agents.json and agent config files only, and document the 'elevenlabs agents push' deploy step in a README.",
       "expected_output": "CLI-convention project files and agent configuration for a restaurant reservation voice agent",
       "files": [],
       "expectations": [
@@ -100,6 +100,21 @@
         "Sends the full agent body of name, conversation_config, platform_settings, and workflow read from the agent",
         "Explains that a 400 with status procedure_validation_failed carries errors keyed by procedure ID with a path per entry, and that the fix goes into the procedure draft",
         "Discards the agent draft afterwards with a DELETE on the drafts endpoint"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "I want to test my ElevenLabs agent tool handler offline before connecting a conversation. Show a runnable Python standard-library example that rejects a wrong order reference, malformed backend status and unauthorized review requests. Include deterministic tests. Do not ask for credentials, onboard, provision an agent, call a provider or run paid evaluations.",
+      "expected_output": "Offline application-boundary tests with explicit separation from provider/model evaluation",
+      "files": [],
+      "expectations": [
+        "Uses only local Python standard-library tests and makes no ElevenLabs or external API calls",
+        "Rejects malformed arguments and out-of-scope references before invoking the backend",
+        "Rejects malformed or mismatched backend facts instead of reporting grounded success",
+        "Derives authorization from a trusted application context rather than a model argument",
+        "Distinguishes unknown records from lookup failures and preserves pending review state",
+        "Does not request API keys or run onboarding for this offline-only task",
+        "States that deterministic passing tests do not establish model tool selection or conversational grounding"
       ]
     }
   ]

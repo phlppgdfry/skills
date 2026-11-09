@@ -461,6 +461,10 @@ Use `node_id` when the transfer should start at a specific workflow node. Omit
 Set `preserve_client_tts_overrides` when client-side TTS overrides should continue
 after the transfer.
 
+## Offline Contract Tests
+
+Test the application boundary before connecting a real conversation: reject malformed arguments before backend calls, validate returned facts, distinguish unknown records from unavailable sources, and enforce authorization in a trusted service. See [Offline Tool Contract Testing](offline-tool-testing.md) for a runnable standard-library example and regression cases. These tests complement provider tool-call tests; they do not evaluate model behavior.
+
 ## Best Practices
 
 ### Tool Descriptions
